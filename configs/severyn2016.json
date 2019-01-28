@@ -1,0 +1,33 @@
+{
+    "embeddings":"alexi",
+    "train_as":"classifier",
+    "parser":"text_overlap",
+    "model":{
+        "name":"severyn_2016",
+        "params":{
+            "static_emb": true,
+            "hidden_size":100,
+            "pad_idx":0,
+            "qcnn":{
+                "conv_size":100,
+                "windows":[5],
+                "activation":"relu"
+            },
+            "acnn":{
+                "conv_size":100,
+                "windows":[5],
+                "activation":"relu"
+            }
+        }
+
+    },
+    "seed": 123,
+    "patience": 5,
+    "batch_size": 50,
+    "optimizer":{
+        "name":"Adadelta",
+        "params":{
+        }
+    }
+
+}
