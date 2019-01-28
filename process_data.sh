@@ -4,7 +4,7 @@ python -m qair.data.tokenizer wikiqa
 python -m qair.data.tokenizer trecqa
 python -m qair.data.vocabulary wikiqa --lower
 python -m qair.data.vocabulary trecqa --lower
-python -m qair.data.embeddings wikiqa alexi.txt 
-python -m qair.data.embeddings trecqa alexi.txt 
+python -m qair.data.embeddings wikiqa alexi.bin 
+python -m qair.data.embeddings trecqa alexi.bin 
 python -m qair.data.embeddings wikiqa glove.txt 
 python -m qair.data.embeddings trecqa glove.txt 

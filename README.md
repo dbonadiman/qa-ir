@@ -29,6 +29,10 @@ If your machine support CUDA it will do the setup for you!
 
 ```conda install -c conda-forge scikit-learn```
 
+### Tabulate
+
+```conda install tabulate``
+
 ## Download and preprocess required data
 
 Download the **TRECQA** and **WikiQA** dataset
@@ -45,7 +49,7 @@ Common Crawl (840B tokens, 2.2M vocab, cased, 300d vectors, 2.03 GB download): g
 
 for all the models but Severyn2016 (it requires the embeddings in https://github.com/aseveryn/deep-qa)
 
-move the embeddings into a ```embs``` directory and convert them in textual format calling them ```glove.txt``` and ```alexi.txt``` respectfully.
+move the embeddings into a ```embs``` directory and convert them in textual format calling them ```glove.txt``` and ```alexi.bin``` respectfully.
 
 
 process the dataset the dataset

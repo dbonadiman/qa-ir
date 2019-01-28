@@ -7,12 +7,12 @@ import logging
 from qair.models.skeletons import Model, Trainer, Parser
 
 # Import models
-from qair.models.severyn import CNN, RelCNN, Severyn16
+import qair.models.severyn
 
 # Import Trainers
-from qair.models.trainers import Classifier, Ranker
+import qair.models.trainers
 
 # Import Parsers
-from qair.models.parsers import Text, TextOverlap
+import qair.models.parsers
 
 
