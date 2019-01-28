@@ -110,5 +110,6 @@ venv.bak/
 
 /.vscode
 /results*
+/original_data*
 
 *.ipynb
