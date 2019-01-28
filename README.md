@@ -1,4 +1,4 @@
-# CosineNet
+# Question Answering and Information Retrieval
 
 ## Setup environment
 You need Python 3.6. 
