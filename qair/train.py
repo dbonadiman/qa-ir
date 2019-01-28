@@ -19,7 +19,7 @@ def trainer(name, config, dataset):
     else:    
         experiment_path = f'{name}'
 
-    with open(utils.create_path(f'{experiment_path}')+'/config.json', 'w') as conff:
+    with open(utils.create_path(f'{experiment_path}/config.json'), 'w') as conff:
         json.dump(config, conff)
     logging.info(f'saving experiment in: {experiment_path}')
     train_utils.set_seed(config['seed'])

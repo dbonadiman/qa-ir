@@ -1,7 +1,7 @@
 import argparse
 import numpy as np
 import logging
-from gensim.models import KeyedVectors
+from gensim.models import KeyedVectors, keyedvectors
 from qair.data.utils import create_path
 np.random.seed(666)
 
@@ -17,8 +17,11 @@ def random_from_vocab(vocab, mean, std, dim):
         yield (word, np.random.normal(mean, std, (dim,)))
 
 
-def emb_stats(embs_dict, vocab):
-    e = np.array([embs_dict[w] for w in embs_dict])
+def emb_stats(embs_dict):
+    if isinstance(embs_dict, keyedvectors.Word2VecKeyedVectors):
+        e = np.array([embs_dict[w] for w in embs_dict.vocab])
+    else:
+        e = np.array([embs_dict[w] for w in embs_dict])
     return float(np.mean(e)), float(np.std(e)), e.shape[1]
 
 def load_vocabulary(ifile):
@@ -79,7 +82,7 @@ if __name__ == '__main__':
         
     elif args.embeddings[-3:] == 'bin':
         w2v = KeyedVectors.load_word2vec_format(f'embs/{args.embeddings}', binary=(args.embeddings[-3:] == 'bin'))
-        mean, std, dim = emb_stats(w2v, w2v.vocab)
+        mean, std, dim = emb_stats(w2v.wv)
         logging.info(f'Stats Mean {mean} Std {std} Dim {dim}')
         logging.info(f'Original Vocab: {len(vocab)}')
         logging.info(f'Embedding Vocab: {len(w2v.vocab)}')
@@ -93,7 +96,7 @@ if __name__ == '__main__':
         vocab_set = set(word for word, _ in vocab)
         w2v = load_w2v_fast(f'embs/{args.embeddings}', vocab_set)
         
-        mean, std, dim = emb_stats(w2v, w2v)
+        mean, std, dim = emb_stats(w2v)
         logging.info(f'Stats Mean {mean} Std {std} Dim {dim}')
         logging.info(f'Original Vocab: {len(vocab)}')
         logging.info(f'Embedding Vocab: {len(w2v)}')
