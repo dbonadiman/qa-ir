@@ -46,8 +46,8 @@ def trainer(name, config, dataset):
     test_pred = train_model.predict(test_data)
     test_pred.to_file(f"{experiment_path}/test.json")
     
-    valid_metrics = reranking.evaluate(valid_pred, 0.5)
-    test_metrics = reranking.evaluate(test_pred, 0.5)
+    valid_metrics = reranking.evaluate(valid_pred, 0.5, mode='all_neg')
+    test_metrics = reranking.evaluate(test_pred, 0.5, mode='all_neg')
 
     with open(f"{experiment_path}/valid_metrics_0.5.json", 'w') as f:
         json.dump(valid_metrics, f)
@@ -67,8 +67,8 @@ def trainer(name, config, dataset):
             max_f1 = f1
             best_th = th
     
-    valid_metrics = reranking.evaluate(valid_pred, best_th)
-    test_metrics = reranking.evaluate(test_pred, best_th)
+    valid_metrics = reranking.evaluate(valid_pred, best_th, mode='all_neg')
+    test_metrics = reranking.evaluate(test_pred, best_th, mode='all_neg')
 
     with open(f"{experiment_path}/valid_metrics_best.json", 'w') as f:
         json.dump(valid_metrics, f)
